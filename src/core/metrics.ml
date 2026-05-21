@@ -162,6 +162,8 @@ module Src = struct
         data_fields = None;
       }
     in
+    if List.exists (fun Src src -> String.equal src.name name) !list then
+      invalid_arg "Metrics source with the same name already exists";
     list := Src src :: !list;
     src
 
